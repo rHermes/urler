@@ -12,6 +12,7 @@ import (
 type MUrl struct {
 	*url.URL
 	Values url.Values
+	Raw    string
 }
 
 func newMUrl(line string) (*MUrl, error) {
@@ -19,7 +20,7 @@ func newMUrl(line string) (*MUrl, error) {
 	if err != nil {
 		return nil, err
 	}
-	k := &MUrl{URL: u, Values: u.Query()}
+	k := &MUrl{URL: u, Values: u.Query(), Raw: u.String()}
 	return k, nil
 }
 
